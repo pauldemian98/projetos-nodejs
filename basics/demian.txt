@@ -1,0 +1,3 @@
+testando criar um arquivo texto direto pelo node
+
+Agora estou escrevendo outro conteudo
