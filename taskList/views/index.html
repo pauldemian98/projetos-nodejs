@@ -1,0 +1,21 @@
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Tarefas | Projeto 01</title>
+    <link href="../public/style.css" rel="stylesheet" />
+  </head>
+  <body class="tarefas">
+    <h2>Olá <%= nome %>!</h2>
+    <p>Bem vindo ao meu Primeiro Projeto em Node.js</p>
+    <form method="post">
+        <input id="task" type="text" name="tarefa">
+        <input type="submit" name="acao" value="Adicionar Tarefa">
+    </form>
+    <ul>
+      <% for(let i = 0; i < tarefasList.length; i++){ %>
+      <li><%= tarefasList[i] %> | <a href="/deletar/<%= i %>">X</a></li>
+      <%} %>
+    </ul>
+  </body>
+</html>
