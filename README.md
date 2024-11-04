@@ -5,6 +5,7 @@ Fique a vontade caso deseje usar como material de Consulta, abaixo coloco como o
 - basics: Contém funções Básicas, usando somente módulos padrão do próprio node;
 - standards: Contém funções mais complexas, utilizando módulos personalizados também;
 - taskList: meu primeiro projeto em Node.js que trata-se de uma aplicação para adicionar e remover tarefas simples sem uso de banco de dados;
+- newsWebStatic: segundo projeto em Node.js trata-se de um portal de noticias estatico sem uso de banco de dados (imagens geradas por ia);
 
 Desenvolvido por: Paulo Lucas Silva Sá
 
