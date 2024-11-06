@@ -1,0 +1,64 @@
+<html lang="pt-br">
+
+    <%- include('./partials/header.html') %>
+
+    <section class="noticia-destaque">
+        <div class="center">
+                <div class="img-destaque">
+                    <div class="overlay-destaque"></div>
+                    <div class="title-destaque-descricao">
+                        <a href="<%= posts[0].slug %>"><h2><%= posts[0].titulo %></h2></a>
+                        <p><%- posts[0].descricaoResumida %>...</p>
+                    </div>
+                    <img src="<%= posts[0].imagem %>" alt="icon-breaking-news">
+                </div>
+        </div>
+    </section>
+
+    <section class="outras-noticias">
+      <div class="title-outras-noticias">
+          <h2>Últimas Notícias</h2>
+          <br>
+          <div class="center">
+            <div class="ultimas">
+
+              <% for(let i=1; i < posts.length; i++ ) { %>
+              <div class="box-ultima-single">
+                <img src="<%= posts[i].imagem %>" alt="lançamento de foguete">
+                <div class="conteudo-noticia-single">
+                  <h3><%= posts[i].categoria %></h3>
+                  <h2><%= posts[i].titulo %></h2>
+                  <p><%- posts[i].descricaoUltNoticias %>...</p>  
+                  <a href="<%= posts[i].slug %>">Ler mais</a>
+                </div>
+              </div>
+              <% } %>
+
+            </div>
+            <div class="mais-lidas">
+              <h3>Mais Lidas</h3>
+              <div class="mais-lidas-noticias">
+
+                
+
+                <% for(let i=0; i < postsTop.length; i++ ) { %>
+                <div class="mais-lidas-noticias-single">
+                  <img src="<%= postsTop[i].imagem %>" alt="<%= postsTop[i].slug %>">
+                  <div class="texto-mais-lida-single">
+                    <h4><%= postsTop[i].categoria %></h4>
+                    <p><%- postsTop[i].descricaoMaislidas %>...</p>
+                    <p style="font-size: 12px; font-weight: bold;"><%= postsTop[i].views %> views</p>
+                    <a href="<%= postsTop[i].slug %>">Ler mais</a>
+                  </div>
+                </div>
+                <% } %>
+
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <%- include('./partials/footer.html') %>
+  </body>
+</html>
