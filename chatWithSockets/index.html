@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Plataforma de chat</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f0f2f5;
+      }
+
+      .chat-container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        max-width: 600px;
+        margin: 0 auto;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .chat-window {
+        flex-grow: 1;
+        padding: 1rem;
+        overflow-y: auto;
+        background-color: #ffffff;
+      }
+
+      .message {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding: 10rem 1rem;
+        border-radius: 20px;
+        max-width: 80%;
+      }
+
+      .message.sent {
+        background-color: #007bff;
+        color: #fff;
+        align-self: flex-end;
+        padding: 2rem 3rem; /* Aumenta o espaço ao redor do texto */
+      }
+
+      .message.received {
+        background-color: #f1f0f0;
+        align-self: flex-start;
+        color: #333;
+        padding: 2rem 3rem; /* Aumenta o espaço ao redor do texto */
+      }
+
+      .sender-name {
+        font-weight: bold;
+        margin-right: 0.5rem;
+        padding: 2rem 3rem; 
+      }
+
+      #messages > li {
+        list-style-type: none;
+        padding: 1rem 1.5rem; 
+      }
+
+      #form {
+        display: flex;
+        padding: 0.5rem;
+        background-color: #eee;
+        border-top: 1px solid #ddd;
+      }
+
+      #input {
+        border: 1px solid #ccc;
+        padding: 0.5rem 1rem;
+        flex-grow: 1;
+        border-radius: 20px;
+        margin-right: 0.5rem;
+        font-size: 1rem;
+      }
+
+      #input:focus {
+        outline: none;
+        border-color: #007bff;
+      }
+
+      #form > button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1.5rem;
+        border-radius: 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      #form > button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <div class="chat-container">
+      <div class="chat-window">
+        <ul id="messages"></ul>
+      </div>
+
+      <form id="form" action="">
+        <input id="input" autocomplete="off" placeholder="Digite sua mensagem..." /><button>Enviar</button>
+      </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+      var socket = io();
+
+      var nome = prompt("Qual seu nome?");
+
+      socket.emit("new user", nome);
+
+      socket.on("new user", function (data) {
+        if (data.success) {
+          alert("Olá " + nome + ", bem-vindo ao chat!");
+        } else {
+          alert("Já existe um usuário com este nome.");
+          window.location.href = "/";
+        }
+      });
+
+      var messages = document.getElementById("messages");
+      var form = document.getElementById("form");
+      var input = document.getElementById("input");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        if (input.value) {
+          socket.emit("chat message", { msg: input.value, nome: nome });
+          input.value = "";
+        }
+      });
+
+      socket.on("chat message", function (obj) {
+        var item = document.createElement("li");
+        item.className = "message";
+        item.classList.add(obj.nome == nome ? "sent" : "received");
+
+        item.textContent = obj.nome + ": " + obj.msg;
+        messages.appendChild(item);
+
+        messages.scrollTop = messages.scrollHeight;
+      });
+    </script>
+  </body>
+</html>

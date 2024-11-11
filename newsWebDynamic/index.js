@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const Posts = require("./posts.js");
-//senha: JTsJPqUUGuMe4IoY
+
 mongoose
   .connect(
     "SubstituirPelolinkDoProprioMongoDBAtlas",
