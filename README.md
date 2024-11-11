@@ -7,7 +7,7 @@ Fique a vontade caso deseje usar como material de Consulta, abaixo coloco como o
 - taskList: meu primeiro projeto em Node.js que trata-se de uma aplicação para adicionar e remover tarefas simples sem uso de banco de dados;
 - newsWebStatic: segundo projeto em Node.js trata-se de um portal de noticias estatico sem uso de banco de dados (imagens geradas por ia);
 - newsWebDynamic: terceiro projeto em Node.js, usando EJS para server side rendering e Mongoose para trabalhar com o banco de dados, o objetivo é criar um portal de noticias agora dinâmico usando banco de Dados (não relacional) - Mongo DB Atlas
-- chatWithSockets: 
+- chatWithSockets: Sala de chat interativo entre as conexões estabelecidas com WebSockets, que nada mais eh que uma maneira eficiente de transferencia de dados entre o lado do cliente e do servidor, para tal objetivo foi utilizado a Biblioteca Socket.io que faz uso de fato dos web Sockets.
 
 Desenvolvido por: Paulo Lucas Silva Sá
 
