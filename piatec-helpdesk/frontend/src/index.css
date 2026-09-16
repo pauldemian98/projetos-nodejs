@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Exo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-exo: 'Exo', sans-serif;
+
+  /* Identidade Visual Oficial Piatec */
+  --color-piatec-navy: #174082;       /* Pantone 7687 C */
+  --color-piatec-teal: #018896;       /* Pantone 321 C */
+  --color-piatec-dark: #1d1d1b;       /* Pantone Black C */
+  --color-piatec-darkgray: #4a4a49;   /* Pantone 418 C */
+  --color-piatec-gray: #9d9d9c;       /* Pantone 414 C */
+  --color-piatec-white: #ffffff;      /* Pantone Cool Gray 1C */
+
+  --color-primary: #174082;
+  --color-secondary: #018896;
+}
+
+body {
+  font-family: 'Exo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1d1d1b;
+  background-color: #f8fafc;
+}
